@@ -7,20 +7,20 @@ backgroundSize: 'cover',marginTop: '-60px'}">
     <hr class="vonal">
     <div>
         <label><h3>Neve:&nbsp;</h3></label>
-        <input class="inputfield" type="text" v-model.trim="name" @change="teszt(); jelentkez()" placeholder="Teljes név" minlength="2" maxlength="50" required 
+        <input class="inputfield" type="text" v-model.trim="name" @change="teszt1(); jelentkez()" placeholder="Teljes név" minlength="2" maxlength="50" required 
         pattern="[A-z\u00C0-\u00FF]{2,}\.?\s[A-z\u00C0-\u00FF]{2,}(\s[A-z\u00C0-\u00FF]{2,})*$" title="Kérjük valódi nevet adjon meg! Pl.: Szekeres Attila">
         <br>
         <span class="error" v-if="helyesName">A megadott név helytelen!</span>
     </div>
     <div>
         <label><h3>E-mail címe:&nbsp;</h3></label>
-        <input class="inputfield" type="text" v-model.trim="email" @change="teszt(); jelentkez()" placeholder="cim@freemail.hu"  required pattern="[A-z\u00C0-\u00FF0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Az e-mail cím formátuma nem megfelelő! Pl.: cim@freemail.hu">
+        <input class="inputfield" type="text" v-model.trim="email" @change="teszt2(); jelentkez()" placeholder="cim@freemail.hu"  required pattern="[A-z\u00C0-\u00FF0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Az e-mail cím formátuma nem megfelelő! Pl.: cim@freemail.hu">
         <br>
         <span class="error" v-if="helyesEmail">A megadott e-mail helytelen!</span>
     </div>
     <div>
         <label><h3>Telefonszáma:&nbsp;</h3></label>
-        <input class="inputfield" type="number" v-model.trim="telefon"  @change="teszt(); jelentkez()" placeholder="+36 30 995 6648" required  pattern="\+?[03]6[237]0\d{7}$" title="Mobiltelefon számát adja meg! Pl.: +36 30 995 6648">
+        <input class="inputfield" type="number" v-model.trim="telefon"  @change="teszt3(); jelentkez()" placeholder="+36 30 995 6648" required  pattern="\+?[03]6[237]0\d{7}$" title="Mobiltelefon számát adja meg! Pl.: +36 30 995 6648">
         <br>
         <span class="error" v-if="helyesTelefon">A megadott telefonszám helytelen!</span>
     </div>
@@ -30,25 +30,25 @@ backgroundSize: 'cover',marginTop: '-60px'}">
         <label><h2>Lakcíme:&nbsp;</h2></label>
         <br>
         <label class="col-6 col-sm-6 col-md-6"><h5>Irányítószáma:</h5></label>
-        <input class="inputfield col-6 col-sm-6 col-md-6" type="number" v-model.trim="irszam"  @change="teszt(); jelentkez()"  placeholder="6721" required pattern="[1-9]{1}[0-9]{3}" title="Kérjük valódi irányítószámot adjon meg! Pl.: 6721">
+        <input class="inputfield col-6 col-sm-6 col-md-6" type="number" v-model.trim="irszam"  @change="teszt4(); jelentkez()"  placeholder="6721" required pattern="[1-9]{1}[0-9]{3}" title="Kérjük valódi irányítószámot adjon meg! Pl.: 6721">
         <br>
         <span class="error col-6 col-sm-6 col-md-6" v-if="helyesIrszam">A megadott Irányítószám helytelen!</span>
 
         <br>
         <label class="col-6 col-sm-6 col-md-6"><h5>Település:</h5></label>
-        <input class="inputfield col-6 col-sm-6 col-md-6" type="text" v-model.trim="telepules" minlength="2"  @change="teszt(); jelentkez()" required placeholder="Budapest"   pattern="[A-z\u00C0-\u00FF]{3,}(\s[A-z\u00C0-\u00FF]{2,})*$" title="Kérjük magyarországi települést adjon meg! Pl.: Budapest">
+        <input class="inputfield col-6 col-sm-6 col-md-6" type="text" v-model.trim="telepules" minlength="2"  @change="teszt5(); jelentkez()" required placeholder="Budapest"   pattern="[A-z\u00C0-\u00FF]{3,}(\s[A-z\u00C0-\u00FF]{2,})*$" title="Kérjük magyarországi települést adjon meg! Pl.: Budapest">
         <br>
         <span class="error col-6 col-sm-6 col-md-6" v-if="helyesTelepules">A megadott település helytelen!</span>
 
         <br>
         <label class="col-6 col-sm-6 col-md-6"><h5>Utca:</h5></label>
-        <input class="inputfield col-6 col-sm-6 col-md-6" type="text" v-model.trim="utca" minlength="2" @change="teszt(); jelentkez()"  placeholder="József Attila" required pattern="[A-z\u00C0-\u00FF]{3,}(\s[A-z\u00C0-\u00FF]{2,}\.?)*$">
+        <input class="inputfield col-6 col-sm-6 col-md-6" type="text" v-model.trim="utca" minlength="2" @change="teszt6(); jelentkez()"  placeholder="József Attila" required pattern="[A-z\u00C0-\u00FF]{3,}(\s[A-z\u00C0-\u00FF]{2,}\.?)*$">
         <br>
         <span class="col-6 col-sm-6 col-md-6 error" v-if="helyesUtca">A megadott utca helytelen!</span>
 
         <br>
         <label class="col-6 col-sm-6 col-md-6"><h5>Házszám:</h5></label>
-        <input class="inputfield col-6 col-sm-6 col-md-6" type="text" v-model.trim="hazszam"  @change="teszt(); jelentkez()" placeholder="29" required  pattern="[A-z\u00C0-\u00FF]?\/?[0-9]{1,3}\/?[A-z\u00C0-\u00FF]?">
+        <input class="inputfield col-6 col-sm-6 col-md-6" type="text" v-model.trim="hazszam"  @change="teszt7(); jelentkez()" placeholder="29" required  pattern="[A-z\u00C0-\u00FF]?\/?[0-9]{1,3}\/?[A-z\u00C0-\u00FF]?">
         <br>
         <span class="error col-6 col-sm-6 col-md-6" v-if="helyesHazszam">A megadott házszám helytelen!</span>
 
@@ -190,31 +190,31 @@ export default {
                 default: 
             }
         },
-        teszt(){
+        teszt1(){
             if (this.regName.test(this.name)) {
                 this.helyesName=false
-            } else {this.helyesName=true}
-            
+            } else {this.helyesName=true}},
+        teszt2(){
             if (this.regEmail.test(this.email)) {
                 this.helyesEmail=false
-            } else {this.helyesEmail=true}
-
+            } else {this.helyesEmail=true}},
+        teszt3(){
             if (this.regTelefon.test(this.telefon)) {
                 this.helyesTelefon=false
-            } else {this.helyesTelefon=true}
-
+            } else {this.helyesTelefon=true}},
+        teszt4(){
             if (this.regIrszam.test(this.irszam)) {
                 this.helyesIrszam=false
-            } else {this.helyesIrszam=true}
-
+            } else {this.helyesIrszam=true}},
+        teszt5(){
             if (this.regTelepules.test(this.telepules)) {
                 this.helyesTelepules=false
-            } else {this.helyesTelepules=true}
-
+            } else {this.helyesTelepules=true}},
+        teszt6(){
             if (this.regUtca.test(this.utca)) {
                 this.helyesUtca=false
-            } else {this.helyesUtca=true}
-
+            } else {this.helyesUtca=true}},
+        teszt7(){
             if (this.regHazszam.test(this.hazszam)) {
                 this.helyesHazszam=false
             } else {this.helyesHazszam=true}
