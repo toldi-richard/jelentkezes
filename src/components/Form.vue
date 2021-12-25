@@ -20,7 +20,7 @@ backgroundSize: 'cover',marginTop: '-60px'}">
     </div>
     <div>
         <label><h3>Telefonszáma:&nbsp;</h3></label>
-        <input class="inputfield" type="text" v-model.trim="telefon"  @change="teszt(); jelentkez()" placeholder="+36 30 995 6648" required  pattern="\+?[03]6[237]0\d{7}$" title="Mobiltelefon számát adja meg! Pl.: +36 30 995 6648">
+        <input class="inputfield" type="number" v-model.trim="telefon"  @change="teszt(); jelentkez()" placeholder="+36 30 995 6648" required  pattern="\+?[03]6[237]0\d{7}$" title="Mobiltelefon számát adja meg! Pl.: +36 30 995 6648">
         <br>
         <span class="error" v-if="helyesTelefon">A megadott telefonszám helytelen!</span>
     </div>
@@ -30,7 +30,7 @@ backgroundSize: 'cover',marginTop: '-60px'}">
         <label><h2>Lakcíme:&nbsp;</h2></label>
         <br>
         <label class="col-6 col-sm-6 col-md-6"><h5>Irányítószáma:</h5></label>
-        <input class="inputfield col-6 col-sm-6 col-md-6" type="text" v-model.trim="irszam"  @change="teszt(); jelentkez()"  placeholder="6721" required pattern="[1-9]{1}[0-9]{3}" title="Kérjük valódi irányítószámot adjon meg! Pl.: 6721">
+        <input class="inputfield col-6 col-sm-6 col-md-6" type="number" v-model.trim="irszam"  @change="teszt(); jelentkez()"  placeholder="6721" required pattern="[1-9]{1}[0-9]{3}" title="Kérjük valódi irányítószámot adjon meg! Pl.: 6721">
         <br>
         <span class="error col-6 col-sm-6 col-md-6" v-if="helyesIrszam">A megadott Irányítószám helytelen!</span>
 
@@ -67,7 +67,7 @@ backgroundSize: 'cover',marginTop: '-60px'}">
     <div>
         <label id="tapasztalat"><h3>Tapasztalata:&nbsp;&nbsp;</h3></label>
         <br>
-        <textarea rows="8" cols="50" maxlength="500" placeholder="Korábbi tapasztalatai..." @keyup="szamlalo()" v-model="tapasztalat"></textarea>
+        <textarea rows="8" cols="50" type="text" maxlength="500" placeholder="Korábbi tapasztalatai..." @keyup="szamlalo()" v-model="tapasztalat"></textarea>
         <br>
         <span id="szamlalo">{{hossz}}</span>
     </div>
@@ -87,7 +87,7 @@ backgroundSize: 'cover',marginTop: '-60px'}">
 </div>
 
 <div v-if="!show" :style="{ backgroundImage: `url(${require('@/assets/' + image)})`, backgroundRepeat: 'no-repeat',
-backgroundSize: 'cover',marginTop: '-60px'}" >
+backgroundSize: 'cover',marginTop: '-60px', height:'1200px'}" >
 
  <div id="leadas">
     <h1>Helyesek az adatok?</h1>
@@ -129,7 +129,7 @@ backgroundSize: 'cover',marginTop: '-60px'}" >
             </td>
         </tr>
     </table>
-    <input id="gomb2" type="submit" value="Igen">
+    <input id="gomb2" type="submit" value="Igen" @click="bekuld">
 </div>
 
 </div>
@@ -241,12 +241,15 @@ export default {
                 if (this.name != "" && this.email != "" && this.telefon != "" &&
                 this.irszam != "" && this.telepules != "" && this.utca != "" &&
                 this.hazszam != "" && this.pozicio != "" && !this.helyesName && !this.helyesEmail && !this.helyesTelefon
-                && !this.helyesIrszam && !this.helyesTelepules && !this.helyesUtca && !this.helyesHazszam) {
+                && !this.helyesIrszam && !this.helyesTelepules && !this.helyesUtca && !this.helyesHazszam && this.pozicio!="") {
                     this.jelentkezes=true
                 } else {this.jelentkezes=false}
             },
         lead(){
             this.show=false
+        },
+        bekuld(){
+            window.location.reload()
         }
     }
 }
