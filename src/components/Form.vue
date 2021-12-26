@@ -7,7 +7,7 @@ backgroundSize: 'cover',marginTop: '-60px'}">
     <hr class="vonal">
     <div>
         <label><h3>Neve:&nbsp;</h3></label>
-        <input class="inputfield" type="text" v-model.trim="name" @change="teszt1(); jelentkez()" placeholder="Teljes név" minlength="2" maxlength="50" required 
+        <input class="inputfield" type="text" v-model.trim="name" @change="teszt1(); jelentkez()" placeholder="Kiss János" minlength="2" maxlength="50" required 
         pattern="[A-z\u00C0-\u00FF]{2,}\.?\s[A-z\u00C0-\u00FF]{2,}(\s[A-z\u00C0-\u00FF]{2,})*$" title="Kérjük valódi nevet adjon meg! Pl.: Szekeres Attila">
         <br>
         <span class="error" v-if="helyesName">A megadott név helytelen!</span>
