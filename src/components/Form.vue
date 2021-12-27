@@ -82,14 +82,14 @@ backgroundSize: 'cover',marginTop: '-60px'}">
            <span @click="torles(elem)">{{elem}}</span></div>
     </div>
 
-    <input id="gomb" type="submit" value="Jelentkezés" v-if="jelentkezes" @click="lead">
+    <input id="gomb" type="button" value="Jelentkezés" v-if="jelentkezes" @click="lead">
 </form>
 </div>
 
 <div v-if="!show" :style="{ backgroundImage: `url(${require('@/assets/' + image)})`, backgroundRepeat: 'no-repeat',
 backgroundSize: 'cover',marginTop: '-60px', height:'1200px'}" >
 
- <div id="leadas">
+ <form id="leadas">
     <h1>Helyesek az adatok?</h1>
     <table>
         <tr>
@@ -129,9 +129,8 @@ backgroundSize: 'cover',marginTop: '-60px', height:'1200px'}" >
             </td>
         </tr>
     </table>
-    <input id="gomb2" type="submit" value="Igen" @click="bekuld">
-</div>
-
+    <input id="gomb2" type="submit" value="Igen">
+</form>
 </div>
 </template>
 
@@ -247,9 +246,6 @@ export default {
             },
         lead(){
             this.show=false
-        },
-        bekuld(){
-            window.location.reload()
         }
     }
 }
